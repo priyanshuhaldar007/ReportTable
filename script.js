@@ -31,3 +31,22 @@ imageCells.forEach(image => {
     modal.style.display = "block";
   });
 });
+
+// color coding the INP value
+const inpScores = document.querySelectorAll('.inpScore');
+
+inpScores.forEach(inpscore =>{
+    let value = inpscore.innerHTML;
+    value = value.split(' ')[0];
+    value = value.split(',').join('');
+    console.log(value);
+    if(value<=200){
+        inpscore.style.color = '#09ce6b';
+    }
+    if(value>=500){
+        inpscore.style.color = '#ff4e42';
+    }
+    else {
+        inpscore.style.color = '#ffa400';
+    }
+})
