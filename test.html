@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Example</title>
+    <style>
+        .accordion-container{
+            padding-top: 1rem;
+        }
+
+        .lightweight-accordion{
+            width: 100%;
+            border-bottom: 1px solid rgba(229,229,229,1);
+        }
+
+        details[open] > summary.lightweight-accordion-title::after {
+            transform: rotate(180deg);
+        }
+
+        .lightweight-accordion summary.lightweight-accordion-title {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-right: 2rem !important;
+            background: none;
+            padding-left: 0;
+            cursor: pointer;
+        }
+
+        .lightweight-accordion summary.lightweight-accordion-title::after {
+            content: "";
+            width: 9px;
+            height: 5px;
+            background: url("https://uploads.sitepoint.com/wp-content/uploads/2023/10/1697699669arrow.svg") no-repeat;
+            background-size: cover;
+            margin-top: 5px;
+            transition: 0.2s;
+            position: absolute;
+            right: 1rem;
+        }
+
+        .lightweight-accordion summary.lightweight-accordion-title span {
+            font-weight: 600;
+        }
+
+        .lightweight-accordion details[open] summary~* {
+            animation: none !important;
+        }
+
+        .lightweight-accordion .lightweight-accordion-body {
+            padding: 0 0 1rem 0 !important;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease-out;
+        }
+
+        details[open] > .lightweight-accordion-body {
+            max-height: 40rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="accordion-container">
+    <div class="lightweight-accordion">
+        <details>
+            <summary class="lightweight-accordion-title">
+                <span>Is it mandatory for an individual to serve five years of continuous service for gratuity?</span>
+            </summary>
+            <div class="lightweight-accordion-body">
+                <p>Yes, all employees must serve 5 years of continuous service to receive gratuity. However, employees who face disability, sickness, or death need not complete five years of service to receive gratuity from the employer.</p>
+            </div>
+        </details>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.lightweight-accordion details').forEach((detail) => {
+        detail.addEventListener('toggle', (event) => {
+            const body = detail.querySelector('.lightweight-accordion-body');
+            if (detail.open) {
+                body.style.maxHeight = body.scrollHeight + 'px';
+            } else {
+                body.style.maxHeight = '0';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
