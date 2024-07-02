@@ -39,11 +39,11 @@ inpScores.forEach(inpscore =>{
     let value = inpscore.innerHTML;
     value = value.split(' ')[0];
     value = value.split(',').join('');
-    console.log(value);
+    console.log(value, value<=200);
     if(value<=200){
         inpscore.style.color = '#09ce6b';
     }
-    if(value>=500){
+    else if(value>=500){
         inpscore.style.color = '#ff4e42';
     }
     else {
